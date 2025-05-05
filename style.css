@@ -1,0 +1,217 @@
+html {
+    scroll-behavior: smooth;
+}
+
+
+.Hero  {
+    position: relative;
+    background-image: url("assets/header banner.jpg");
+    background-size: cover; /*image always fits entire space*/
+    background-position: center;
+    padding: 30px 20px;
+    color: white;
+    height: 85vh; /*section fits 85 % of screen height : responsive*/
+    display: flex; /*adds flexbox*/
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.Topbar {
+    display: flex;
+    justify-content: space-between; /*puts logo ;eft and navbar right*/
+    align-items: center; /*aligns items at the top for fashion site rhythm*/
+    padding: 0 20px;
+    align-content: center;
+}
+
+.Logoblock {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /*vertically centre marikiti and nairobi*/
+    gap: 4px; /*adds breathing room between header and navbar*/
+}
+
+.logo {
+    font-family: "Playfair display" , serif;
+    font-size: 2.5rem;
+    margin: 0;
+    line-height: 1;
+    letter-spacing: -0.5px;
+}
+
+
+.Navbar{
+    font-family: "Playfair display" , serif;
+    font-size: 1.5rem;
+    font-weight: 100;
+    text-align: right;
+    display: flex; /*horizontal alignment*/
+    justify-content: flex-end; /*pushes items to the right*/
+    gap: 40px; /*space between h3 items*/
+    padding: 20px 40px; /*space around navbar*/
+    text-transform: uppercase;/*clean capitalization*/
+
+}
+
+/*hover effect*/
+
+.Navbar a { /*targets all my links*/
+  text-decoration: none; /*no underline*/
+  color: white; /*white text*/
+  position: relative; /*underline knows where to sit in relation to text*/
+}
+
+.Navbar a::after { /*no text decor, we're drawing a custom line ourselves*/
+  content: ''; /*says no content just a line*/
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+    /*places line beneath text with -4 breathing room*/
+  width: 0%;
+  height: 1px;
+  background: white;
+    /*a white line but starts invisible (0% width)*/
+  transition: width 0.3s ease;
+    /*the glide line that animates from 0% to 100% when hovered*/
+}
+
+.Navbar a:hover::after { /*white line expands under the word*/
+  width: 100%;
+}
+
+
+.location {
+    font-family: "Poppins" , serif;
+    font-size: 1.5rem;
+    margin-top: 5px;
+    opacity: 0.85; /*slight transparency for elegance*/
+    letter-spacing: 0.5px;
+}
+
+.tagline {
+    font-family: "Playfair display" , serif;
+    font-weight: 200;
+    font-size: 0.8rem;
+    text-align: center;
+    margin-bottom: 10px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+/*scrolling animation*/
+@keyframes scrollBrands {
+0% { /*start at 0; the normal position*/
+    transform: translateX(0);
+}
+50% { /*end at -50 and move left halfway 'off the screen'*/
+    transform: translateX(-25%);
+}
+    100% { /*end at -50 and move left halfway 'off the screen'*/
+    transform: translateX(0);
+}
+}
+
+/*Brands section wrapper*/
+.Brands{
+    padding: 60px 20px;
+    width: 100%;
+    background-color: rgb(255,255,255);
+    overflow: hidden /*hides anything scrolling out of bounds*/
+}
+
+/*the element the animation is being applied to*/
+.BrandsScroll { /*the belt moving my content across the screen*/
+    display: flex;
+    gap: 40px;
+    overflow: hidden;
+    animation: scrollBrands 20s linear infinite; /*scrolls forever in 30s*/
+    width: max-content; /*so the content can scroll horizontally*/
+
+}
+
+/*each brand banner*/
+.BrandBanner { /*frame for the image*/
+    flex: 0 0 auto; /*prevents shrinking*/
+    width:  200px /*calc((100%- (7*40px)) / 8)*/ ;
+    height: 210px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /*shadow under image*/
+
+    /*display: flex;*/
+    /*align-items: center;*/
+    /*justify-content: center;*/
+    /*white-space: nowrap;*/
+    /*min-width: 25%;*/
+
+}
+.BrandBanner img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.prehighlights {
+    background-image: url("assets/header banner.jpg");
+    width: 100%;
+    height: 25vh;
+    margin-top: 10px;
+    display: flex;
+    justify-content: center; /*centres horiz*/
+    align-items: center; /*centres vert*/
+}
+
+.prehighlights h2 {
+    font-family: "Playfair display" , serif;
+    font-weight: 600;
+    color: rgba(255,255, 255, 0.8);
+    text-transform: uppercase;
+    letter-spacing: -0.5px;
+    line-height: 1;
+    font-size: 4rem;
+}
+
+bestsellers{
+    width: 100%;
+    padding: 60px 20px;
+    overflow: hidden;
+    background-color: white;
+}
+
+
+.bestsellerimages{
+    margin-top: 10px;
+    display: grid;
+    /*display: flex; a flexbox can either do
+     a row or a column while a grid can do both*/
+    gap: 20px;
+    width: 100%;
+    box-sizing: border-box;
+    grid-template-columns: repeat(4, 1fr) ; /*how many columns we want on desktop*/
+    transition: ease-in 2s;
+}
+
+
+.bsimages {
+    height: 440px;
+    overflow: hidden;
+    border-radius: 8px;
+   /*flex: 1 1 calc(25% - 20px); /*output width depends on container
+     width which is likely to be 25% of this container's width*/
+    /*flex shorthand standing for flex-grow flex-shrink flex-basis*/
+  /*max-width: calc(25% - 20px);*/
+}
+
+.bsimages img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+@media  screen and (max-width: 768px) {
+    .bestsellerimages {
+        grid-template-columns: 1fr 1fr ;/*how man columns we want in mobile*/
+    }
+
+}
